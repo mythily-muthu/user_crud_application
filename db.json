@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "muthu",
+      "gender": "male",
+      "email": "muthu@gmail.com"
+    },
+    {
+      "id": 144,
+      "name": "gow",
+      "gender": "male",
+      "email": "gbghksjfdd@gmail.com"
+    },
+    {
+      "id": 558,
+      "name": "sri",
+      "gender": "male",
+      "email": "xb@ gmail.com"
+    }
+  ]
+}
