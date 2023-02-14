@@ -1,7 +1,11 @@
 //import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  let [users, setUsers] = useState([]);
+
   let navigate = useNavigate();
   //let [userData, setUserData] = useState();
   const handleAddUser = (e) => {
@@ -16,9 +20,11 @@ const Home = () => {
     navigate(`/edit/${id}`);
   };
   // delete
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     console.log("user deleted", id);
     alert("do you want to delete the user?");
+    await axios.delete(`http://localhost:4000/api/users/${id}`);
+    getAllUser();
   };
 
   let user_data = [
@@ -51,6 +57,16 @@ const Home = () => {
       status: "active",
     },
   ];
+  const getAllUser = async () => {
+    let URL = "http://localhost:4000/api/users";
+    let res = await axios.get(URL);
+    console.log("users", res.data);
+    setUsers(res.data);
+  };
+
+  useEffect(() => {
+    getAllUser();
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-col gap-y-2 ">
@@ -66,38 +82,46 @@ const Home = () => {
       </div>
 
       {/* table div */}
-      <div className="flex w-full">
-        <table className="w-full ">
-          <thead className="bg-teal-700 text-white h-10">
-            <tr>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Gender</td>
-              <td>Status</td>
-              <td>Actions</td>
+      <div className="flex w-full justify-center">
+        <table className="w-[50%]  border-2 border-black ">
+          <thead className="bg-gray-200 h-12 text-center text-black font-medium border-2 border-black ">
+            <tr className="border-2 border-black">
+              <td className="border-2 border-black w-[10%]">Name</td>
+              <td className="border-2 border-black w-[15%]">Email</td>
+              <td className="border-2 border-black w-[5%]">Gender</td>
+              <td className="border-2 border-black w-[5%]">Status</td>
+              <td className="border-2 border-black w-[10%]">Actions</td>
             </tr>
           </thead>
 
           <tbody>
-            {user_data.map((user) => {
+            {users.map((user) => {
               return (
-                <tr key={user.id} className="h-10 ">
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.gender}</td>
-                  <td>{user.status}</td>
-                  <td>
-                    <div className="flex gap-x-2 items-center ">
+                <tr key={user._id} className="h-12">
+                  <td className="border-2 bg-teal-400 text-center ">
+                    {user.name}
+                  </td>
+                  <td className="border-2 bg-teal-400 text-center">
+                    {user.email}
+                  </td>
+                  <td className="border-2 bg-teal-400 text-center">
+                    {user.gender}
+                  </td>
+                  <td className="border-2 bg-teal-400 text-center">
+                    {user.status}
+                  </td>
+                  <td className="border-2 bg-teal-400 text-center">
+                    <div className="flex gap-x-2 items-center">
                       <button
-                        onClick={() => handleEdit(user.id)}
-                        className="rounded px-3 py-1 bg-green-600 cursor-pointer"
+                        onClick={() => handleEdit(user._id)}
+                        className="rounded px-3 py-1 bg-green-600 cursor-pointer  items-center"
                       >
                         Edit
                       </button>
 
                       <button
-                        onClick={() => handleDelete(user.id)}
-                        className="rounded px-3 py-1 bg-red-600 cursor-pointer"
+                        onClick={() => handleDelete(user._id)}
+                        className="rounded px-3 py-1 bg-red-600 cursor-pointer  items-center"
                       >
                         Delete
                       </button>

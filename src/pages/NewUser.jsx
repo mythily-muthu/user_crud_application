@@ -9,13 +9,17 @@ const NewUser = () => {
     name: "",
     gender: "",
     email: "@gmail.com",
-    status: "",
+    status: "active",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("submitted");
-    await axios.post("url", userState);
+    let URL = "http://localhost:4000/api/users";
+    await axios.post(URL, userState);
+
+    navigate("/");
+
+    // await axios.post("url", userState);
   };
 
   //handle back functin
@@ -23,6 +27,10 @@ const NewUser = () => {
     e.preventDefault();
     console.log("welcome to home page");
     navigate("/");
+  };
+
+  const handleOnChange = (e, field) => {
+    setUserState({ ...userState, [field]: e.target.value });
   };
 
   return (
@@ -46,14 +54,12 @@ const NewUser = () => {
               <div className=" flex flex-col ">
                 <label className=" py-5  text-gray-500">Name</label>
                 <input
-                  className=" rounded px-10 py-2 border border-gray-400 outline-none"
+                  className=" rounded px-10 py-2 border border-gray-400 outline-none "
                   required
                   placeholder="Name"
                   type="text"
                   value={userState.name}
-                  onChange={(e) => {
-                    setUserState({ ...setUserState, name: e.target.value });
-                  }}
+                  onChange={(e) => handleOnChange(e, "name")}
                 ></input>
               </div>
 
@@ -66,7 +72,7 @@ const NewUser = () => {
                   type="text"
                   value={userState.email}
                   onChange={(e) => {
-                    setUserState({ ...setUserState, email: e.target.value });
+                    setUserState({ ...userState, email: e.target.value });
                   }}
                 ></input>
               </div>
@@ -80,7 +86,7 @@ const NewUser = () => {
                   type="text"
                   value={userState.gender}
                   onChange={(e) => {
-                    setUserState({ ...setUserState, gender: e.target.value });
+                    setUserState({ ...userState, gender: e.target.value });
                   }}
                 ></input>
               </div>
@@ -132,8 +138,9 @@ const NewUser = () => {
                     type="radio"
                     name="status"
                     value="active"
+                    checked={userState.status === "active"}
                     onChange={(e) => {
-                      setUserState({ ...setUserState, status: e.target.value });
+                      setUserState({ ...userState, status: e.target.value });
                     }}
                   />
                   active
@@ -144,7 +151,7 @@ const NewUser = () => {
                     name="status"
                     value="inactive"
                     onChange={(e) => {
-                      setUserState({ ...setUserState, status: e.target.value });
+                      setUserState({ ...userState, status: e.target.value });
                     }}
                   />
                   inactive
