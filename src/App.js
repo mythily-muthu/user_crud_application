@@ -1,13 +1,7 @@
-
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Content from './layout/Content';
 import Footer from './layout/Footer';
 import Header from './layout/Header';
-import Home from './pages/Home';
-import NewUser from './pages/NewUser';
-import NotFound from './pages/NotFound';
-import UpdateUser from './pages/UpdateUser';
+
 
 function App() {
   return (
