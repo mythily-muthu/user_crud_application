@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateUser = () => {
   let navigate = useNavigate();
-
+  let params = useParams();
+  console.log(params);
   let [userState, setUserState] = useState({
     name: "",
     gender: "",
@@ -15,16 +16,28 @@ const UpdateUser = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     console.log("updated your user data");
-    await axios.post("url", userState);
+    await axios.put(
+      `http://localhost:4000/api/users/${params.user_id}`,
+      userState
+    );
+    navigate("/");
   };
 
+  const getSingleUser = async () => {
+    let URL = `http://localhost:4000/api/users/${params.user_id}`;
+    let res = await axios.get(URL);
+    console.log(res.data);
+    setUserState(res.data);
+  };
   //handle back functin
   const handleBack = (e) => {
     e.preventDefault();
     console.log("back to home page");
     navigate("/");
   };
-
+  useEffect(() => {
+    getSingleUser();
+  }, []);
   return (
     <div>
       <div className="h-full w-full flex flex-col  ">
@@ -52,7 +65,7 @@ const UpdateUser = () => {
                   type="text"
                   value={userState.name}
                   onChange={(e) => {
-                    setUserState({ ...setUserState, name: e.target.value });
+                    setUserState({ ...userState, name: e.target.value });
                   }}
                 ></input>
               </div>
@@ -66,7 +79,7 @@ const UpdateUser = () => {
                   type="text"
                   value={userState.email}
                   onChange={(e) => {
-                    setUserState({ ...setUserState, email: e.target.value });
+                    setUserState({ ...userState, email: e.target.value });
                   }}
                 ></input>
               </div>
@@ -80,7 +93,7 @@ const UpdateUser = () => {
                   type="text"
                   value={userState.gender}
                   onChange={(e) => {
-                    setUserState({ ...setUserState, gender: e.target.value });
+                    setUserState({ ...userState, gender: e.target.value });
                   }}
                 ></input>
               </div>
@@ -92,8 +105,9 @@ const UpdateUser = () => {
                     type="radio"
                     name="status"
                     value="active"
+                    checked={userState.status === "active"}
                     onChange={(e) => {
-                      setUserState({ ...setUserState, status: e.target.value });
+                      setUserState({ ...userState, status: e.target.value });
                     }}
                   />
                   active
@@ -103,8 +117,9 @@ const UpdateUser = () => {
                     type="radio"
                     name="status"
                     value="inactive"
+                    checked={userState.status === "inactive"}
                     onChange={(e) => {
-                      setUserState({ ...setUserState, status: e.target.value });
+                      setUserState({ ...userState, status: e.target.value });
                     }}
                   />
                   inactive
