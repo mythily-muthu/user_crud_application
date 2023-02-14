@@ -16,8 +16,9 @@ const Home = () => {
     navigate(`/edit/${id}`);
   };
   // delete
-  const handleDelete = () => {
-    console.log("user deleted");
+  const handleDelete = (id) => {
+    console.log("user deleted", id);
+    alert("do you want to delete the user?");
   };
 
   let user_data = [
@@ -95,7 +96,7 @@ const Home = () => {
                       </button>
 
                       <button
-                        onClick={handleDelete}
+                        onClick={() => handleDelete(user.id)}
                         className="rounded px-3 py-1 bg-red-600 cursor-pointer"
                       >
                         Delete
