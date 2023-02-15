@@ -91,46 +91,6 @@ const NewUser = () => {
                 ></input>
               </div>
 
-              {/* <div className="flex py-5 ml-20 ">
-                <div className="flex ml-5 ">
-                  <label className="py-5 text-gray-500 ">Gender</label>
-                </div>
-                <div className="flex ml-10 gap-3">
-                  <input
-                    className="  "
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    onChange={(e) => {
-                      setUserState(e.target.value);
-                    }}
-                  />
-                  male
-                  <input
-                    className=""
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    onChange={(e) => {
-                      setUserState(e.target.value);
-                    }}
-                  />
-                  female
-                  <input
-                    className=" "
-                    type="radio"
-                    name="gender"
-                    value="others"
-                    onChange={(e) => {
-                      setUserState(e.target.value);
-                    }}
-                  />
-                  others
-                </div>
-              </div>
-
-              */}
-
               <div className="flex mr-16 py-10 ">
                 <label className=" mr-14 text-gray-500">Status</label>
                 <div className="flex gap-1 ">

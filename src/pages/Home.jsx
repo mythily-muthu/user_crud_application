@@ -57,6 +57,7 @@ const Home = () => {
       status: "active",
     },
   ];
+
   const getAllUser = async () => {
     let URL = "http://localhost:4000/api/users";
     let res = await axios.get(URL);
@@ -71,10 +72,11 @@ const Home = () => {
   return (
     <div className="w-full h-full flex flex-col gap-y-2 ">
       {/* title div */}
-      <div className="flex h-12 justify-between p-4 items-center">
-        <h3 className="text-stone-800 text-2xl">User List</h3>
+
+      <div className="flex  justify-between h-12  px-8 items-center py-10 ">
+        <h3 className="text-stone-800 text-3xl  ">User List</h3>
         <button
-          className="rounded bg-green-700 text-white px-4 py-2 cursor-pointer"
+          className=" flex justify-center rounded  bg-green-700 text-white px-3 py-1 cursor-pointer"
           onClick={handleAddUser}
         >
           Add user
@@ -83,10 +85,10 @@ const Home = () => {
 
       {/* table div */}
       <div className="flex w-full justify-center">
-        <table className="w-[50%]  border-2 border-black ">
-          <thead className="bg-gray-200 h-12 text-center text-black font-medium border-2 border-black ">
+        <table className="w-full border-2 border-black ">
+          <thead className="bg-violet-600 h-11 text-center text-white font-medium border-2 border-black ">
             <tr className="border-2 border-black">
-              <td className="border-2 border-black w-[10%]">Name</td>
+              <td className="border-2 border-black w-[20%]">Name</td>
               <td className="border-2 border-black w-[15%]">Email</td>
               <td className="border-2 border-black w-[5%]">Gender</td>
               <td className="border-2 border-black w-[5%]">Status</td>
@@ -98,20 +100,12 @@ const Home = () => {
             {users.map((user) => {
               return (
                 <tr key={user._id} className="h-12">
-                  <td className="border-2 bg-teal-400 text-center ">
-                    {user.name}
-                  </td>
-                  <td className="border-2 bg-teal-400 text-center">
-                    {user.email}
-                  </td>
-                  <td className="border-2 bg-teal-400 text-center">
-                    {user.gender}
-                  </td>
-                  <td className="border-2 bg-teal-400 text-center">
-                    {user.status}
-                  </td>
-                  <td className="border-2 bg-teal-400 text-center">
-                    <div className="flex gap-x-2 items-center">
+                  <td className="border-2 text-center ">{user.name}</td>
+                  <td className="border-2  text-center">{user.email}</td>
+                  <td className="border-2  text-center">{user.gender}</td>
+                  <td className="border-2  text-center">{user.status}</td>
+                  <td className="border-2  text-center">
+                    <div className="flex gap-x-2 items-center justify-center">
                       <button
                         onClick={() => handleEdit(user._id)}
                         className="rounded px-3 py-1 bg-green-600 cursor-pointer  items-center"

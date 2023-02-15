@@ -2,13 +2,21 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="flex w-full h-10 items-center bg-gray-200 p-4 justify-between">
-      {/* left div */}
-      <div className="flex">left</div>
-
-      {/* right div */}
-      <div className="flex">right</div>
-    </div>
+    <header className="bg-gray-800">
+      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a className="text-gray-300 hover:text-white" href="/">
+          My App
+        </a>
+        <div>
+          <a className="text-gray-300 hover:text-white mr-4" href="/">
+            Users
+          </a>
+          <a className="text-gray-300 hover:text-white" href="/products">
+            Products
+          </a>
+        </div>
+      </nav>
+    </header>
   );
 };
 

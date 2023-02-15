@@ -4,23 +4,24 @@ import Home from "../pages/Home";
 import NewUser from "../pages/NewUser";
 import NotFound from "../pages/NotFound";
 import UpdateUser from "../pages/UpdateUser";
+import Products from "../pages/Products";
+import EditProducts from "../pages/EditProducts";
+import CreateProducts from "../pages/CreateProducts";
 
 const Content = () => {
   return (
     <div className="w-full h-full flex bg-white">
       <BrowserRouter>
-        {/* <div className="flex bg-black p-5 items-center justify-evenly w-full ">
-          <button className=" text-white text-xl ">Home</button>
-          <button className=" text-white text-xl ">About</button>
-          <Link to="/create" className=" text-white text-xl ">
-            New User
-          </Link>
-        </div> */}
         <Routes>
+          {/* user routse */}
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<NewUser />} />
           <Route path="/edit/:user_id" element={<UpdateUser />} />
           <Route path="*" element={<NotFound />} />
+          {/* product routes */}
+          <Route path="/products" element={<Products />} />
+          <Route path="/createproducts" element={<CreateProducts />} />
+          <Route path="/editproduct/:product_id" element={<EditProducts />} />
         </Routes>
       </BrowserRouter>
     </div>
