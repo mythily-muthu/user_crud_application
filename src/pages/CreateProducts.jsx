@@ -99,7 +99,7 @@ const CreateProducts = () => {
 
                 <div className="py-1">
                   <button
-                    className=" py-1 px-10 w-full flex bg-green-600 text-white rounded cursor-pointer items-center"
+                    className=" py-1 px-10 w-full flex bg-green-500 text-white rounded cursor-pointer items-center"
                     type="submit"
                   >
                     Save
