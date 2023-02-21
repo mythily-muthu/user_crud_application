@@ -18,7 +18,7 @@ const EditCats = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let URL = `http://localhost:4000/api/cats/${params.cat_id}`;
-    await axios.post(URL, petState);
+    await axios.put(URL, petState);
     navigate("/cats");
 
     // await axios.post("url", userState);
