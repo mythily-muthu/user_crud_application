@@ -10,6 +10,9 @@ import CreateProducts from "../pages/CreateProducts";
 import Cats from "../pages/Cats";
 import CreateCats from "../pages/CreateCats";
 import EditCats from "../pages/EditCats";
+import Countries from "../pages/Countries";
+import CreateCountries from "../pages/CreateCountries";
+import EditCountries from "../pages/EditCountries";
 
 const Content = () => {
   return (
