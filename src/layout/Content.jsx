@@ -29,6 +29,10 @@ const Content = () => {
           <Route path="/cats" element={<Cats />} />
           <Route path="/createcats" element={<CreateCats />} />
           <Route path="/editcat/:cat_id" element={<EditCats />} />
+          {/* countries routes */}
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/createcountries" element={<CreateCountries />} />
+          <Route path="/editcountry/:country_id" element={<EditCountries />} />
         </Routes>
       </BrowserRouter>
     </div>

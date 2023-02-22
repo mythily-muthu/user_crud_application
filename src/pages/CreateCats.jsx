@@ -6,18 +6,18 @@ import InputWrapper from "../components/InputWrapper";
 const CreateCats = () => {
   let navigate = useNavigate();
 
-  let [petCats, setPetCats] = useState({
+  let [catDetails, setCatDetails] = useState({
     image_url: "",
-    Bread_Name: "",
-    Price: "",
-    Nationality: "",
-    Description: "",
+    breed_name: "",
+    price: "",
+    nationality: "",
+    description: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let URL = "http://localhost:4000/api/cats";
-    await axios.post(URL, petCats);
+    await axios.post(URL, catDetails);
     navigate("/cats");
 
     // await axios.post("url", userState);
@@ -30,7 +30,7 @@ const CreateCats = () => {
   };
 
   const handleOnChange = (e, field) => {
-    setPetCats({ ...petCats, [field]: e.target.value });
+    setCatDetails({ ...catDetails, [field]: e.target.value });
   };
 
   return (
@@ -54,52 +54,52 @@ const CreateCats = () => {
               <div className="flex flex-col items-center justify-center  w-full h-full gap-y-2 ">
                 <InputWrapper
                   label={"Breed_Name"}
-                  value={petCats.Bread_Name}
+                  value={catDetails.breed_name}
                   onChange={(e) => {
-                    setPetCats({
-                      ...petCats,
-                      Bread_Name: e.target.value,
+                    setCatDetails({
+                      ...catDetails,
+                      breed_name: e.target.value,
                     });
                   }}
                 />
                 <InputWrapper
                   label={"Nationality"}
-                  value={petCats.Nationality}
+                  value={catDetails.nationality}
                   onChange={(e) => {
-                    setPetCats({
-                      ...petCats,
-                      Nationality: e.target.value,
+                    setCatDetails({
+                      ...catDetails,
+                      nationality: e.target.value,
                     });
                   }}
                 />
                 <InputWrapper
                   label={"Price"}
-                  value={petCats.Price}
+                  value={catDetails.price}
                   onChange={(e) => {
-                    setPetCats({
-                      ...petCats,
-                      Price: e.target.value,
+                    setCatDetails({
+                      ...catDetails,
+                      price: e.target.value,
                     });
                   }}
                 />
 
                 <InputWrapper
                   label={"Description"}
-                  value={petCats.Description}
+                  value={catDetails.description}
                   onChange={(e) => {
-                    setPetCats({
-                      ...petCats,
-                      Description: e.target.value,
+                    setCatDetails({
+                      ...catDetails,
+                      description: e.target.value,
                     });
                   }}
                 />
 
                 <InputWrapper
                   label={"Image url"}
-                  value={petCats.image_url}
+                  value={catDetails.image_url}
                   onChange={(e) => {
-                    setPetCats({
-                      ...petCats,
+                    setCatDetails({
+                      ...catDetails,
                       image_url: e.target.value,
                     });
                   }}

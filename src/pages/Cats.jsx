@@ -15,8 +15,8 @@ const Cats = () => {
     e.preventDefault();
     navigate("/createcats");
   };
-  let handleEdit = () => {
-    navigate("/editcat/:cat_id");
+  let handleEdit = (id) => {
+    navigate(`/editcat/${id}`);
   };
   let handleDelete = async (id) => {
     alert("are you sure you want to delete the cat?");
@@ -46,39 +46,41 @@ const Cats = () => {
         </button>
       </div>
       <h1 className="text-3xl font-bold justify-center flex"> Cats</h1>
-      <div className=" gap-8 flex flex-wrap p-4 py-4 justify-center ">
+      <div className=" gap-8 flex flex-wrap p-4 py-4 ">
         {cats.map((cat) => {
+          console.log("cat:", cat);
           return (
             <div
-              className="w-[200px] h-auto flex flex-col  justify-center rounded bg-green-100 relative "
+              className="w-[200px] h-auto flex flex-col   rounded bg-green-100 relative "
               key={cat._id}
             >
               <img
                 src={cat.image_url}
-                alt={cat.Breed_Name}
+                alt={cat.breed_name}
                 className=" w-56 h-[204px] object-cover"
               />
               <div className="flex flex-col p-2 justify-center">
+                <p className="text-xl font-bold">{cat.breed_name}</p>
                 <p>
                   <span className="text-xl font-bold">$:</span>
-                  {cat.Price}
+                  {cat.price}
                 </p>
-                <p>{cat.Nationality}</p>
+                <p>{cat.nationality}</p>
                 <p>
                   {" "}
-                  <span className="text-lg font-medium">Description:</span>
-                  {cat.Description}
+                  <span className="text-lg font-medium">description:</span>
+                  {cat.description}
                 </p>
                 <div className="pt-5 p-2 flex justify-center gap-x-2 fixed bottom-0 right-0 absolute ">
                   <button
                     className="bg-green-600 text-white items-center text-xs cursor-pointer w-23px p-1  rounded-md "
-                    onClick={() => handleEdit(Cats._id)}
+                    onClick={() => handleEdit(cat._id)}
                   >
                     Edit
                   </button>
                   <button
                     className="bg-red-600 text-white items-center text-xs cursor-pointer w-23px p-1  rounded-md "
-                    onClick={() => handleDelete(Cats._id)}
+                    onClick={() => handleDelete(cat._id)}
                   >
                     Delete
                   </button>
