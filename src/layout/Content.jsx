@@ -13,6 +13,9 @@ import EditCats from "../pages/EditCats";
 import Countries from "../pages/Countries";
 import CreateCountries from "../pages/CreateCountries";
 import EditCountries from "../pages/EditCountries";
+import { Movies } from "../components/movies/Movies";
+import CreateMovies from "../components/movies/CreateMovies";
+import EditMovies from "../components/movies/EditMovies";
 
 const Content = () => {
   return (
@@ -36,6 +39,10 @@ const Content = () => {
           <Route path="/countries" element={<Countries />} />
           <Route path="/createcountries" element={<CreateCountries />} />
           <Route path="/editcountry/:country_id" element={<EditCountries />} />
+          {/* movies routes */}
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/createmovies" element={<CreateMovies />} />
+          <Route path="/editmovie/:movie_id" element={<EditMovies />} />
         </Routes>
       </BrowserRouter>
     </div>

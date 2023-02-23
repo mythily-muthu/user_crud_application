@@ -20,6 +20,9 @@ const Header = () => {
           <a className="text-gray-300 hover:text-white " href="/countries">
             Countries
           </a>
+          <a className="text-gray-300 hover:text-white px-3 " href="/movies">
+            Movies
+          </a>
         </div>
       </nav>
     </header>
