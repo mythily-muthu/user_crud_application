@@ -28,7 +28,7 @@ const CreateCountries = () => {
     <div>
       <div>
         <div className="h-full w-full flex flex-col  ">
-          <form className="container" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="flex fixed left-0 p-2 items-center">
               <button
                 className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer "
